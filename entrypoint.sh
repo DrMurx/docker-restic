@@ -12,7 +12,7 @@ if [ -z "${RESTIC_TAG}" ]; then
   exit 1
 fi
 
-if [ ! -f "${RESTIC_REPOSITORY}/config" ]; then
+if [ -n "${RESTIC_INIT}" ]; then
   echo "Initialize repository '${RESTIC_REPOSITORY}'..."
   restic init | true
 fi
