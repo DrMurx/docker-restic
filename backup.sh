@@ -12,6 +12,7 @@ function dumpMysql() {
             -P ${MYSQL_PORT:-3306} \
             -u ${MYSQL_USER:-root} \
             -p${MYSQL_PASSWORD} \
+            --single-transaction \
             ${MYSQL_DATABASE} \
             > ${DUMP_FILE}.tmp || exit 1
 
