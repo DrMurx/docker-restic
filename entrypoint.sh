@@ -20,4 +20,8 @@ fi
 mkdir -p /var/spool/cron/crontabs
 echo "${SCHEDULE} /usr/local/sbin/backup.sh" > /var/spool/cron/crontabs/root
 
+if [ -n "${PRUNE_SCHEDULE}" ]; then
+  echo "${PRUNE_SCHEDULE} /bin/touch /root/.restic-prune-on-next-run" >> /var/spool/cron/crontabs/root
+fi
+
 exec "${@}"

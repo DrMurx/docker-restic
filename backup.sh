@@ -70,6 +70,10 @@ if [ -n "${RESTIC_FORGET_ARGS}" ]; then
   echo "$(date +'%Y-%m-%d %H:%M:%S') Expiring old snapshots"
   if restic forget ${RESTIC_FORGET_ARGS} | cat; then
     echo "$(date +'%Y-%m-%d %H:%M:%S') Snapshots expired successfully"
+    if [ -f /root/.restic-prune-on-next-run ]; then
+      restic prune
+      rm -v /root/.restic-prune-on-next-run
+    fi
   else
     echo "$(date +'%Y-%m-%d %H:%M:%S') Expiring snapshots failed (status $?)"
     restic unlock | cat
