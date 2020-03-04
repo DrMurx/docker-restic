@@ -17,6 +17,8 @@ if [ -n "${RESTIC_INIT}" ]; then
   restic init | true
 fi
 
+restic unlock | cat
+
 mkdir -p /var/spool/cron/crontabs
 echo "${SCHEDULE} /usr/local/sbin/backup.sh" > /var/spool/cron/crontabs/root
 
