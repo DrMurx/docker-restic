@@ -3,7 +3,7 @@ FROM alpine:3.13
 RUN mkdir /work \
  && cd /work \
  # Get Restic
- && wget -O restic.bz2 https://github.com/restic/restic/releases/download/v0.9.4/restic_0.9.4_linux_amd64.bz2 \
+ && wget -O restic.bz2 https://github.com/restic/restic/releases/download/v0.11.0/restic_0.11.0_linux_amd64.bz2 \
  && bzip2 -d restic.bz2 \
  && chmod a+x restic \
  && mv restic /usr/local/bin/restic \
